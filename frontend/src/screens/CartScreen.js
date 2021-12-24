@@ -6,9 +6,9 @@ import Message from '../components/Message'
 import { addToCart,removeFromCart } from '../actions/cartActions'
 import { cartReducer } from '../reducers/cartReducers'
 
-function CartScreen(match, location, history) {
+function CartScreen({match, location, history}) {
     let {id} = useParams()
-    let params = new URLSearchParams(document.location.search);
+    let params = new URLSearchParams(document.location.search)
     let qty = params.get("qty") ? params.get("qty") : 1
     const productId = id
     const navigate = useNavigate()
@@ -25,12 +25,7 @@ function CartScreen(match, location, history) {
     }
 
     const CheckoutHandler = () =>{
-        navigate({
-            pathname: `/login/`,
-            search: `?${createSearchParams({
-                redirect: "shipping"
-            })}`
-        })
+        navigate('/shipping')
     }
 
     return (
